@@ -22,10 +22,7 @@ public class CookieHeaderMediator extends AbstractMediator {
             Map excessTransportHeaders = (Map) msgContext.getProperty(NhttpConstants.EXCESS_TRANSPORT_HEADERS);
             Map transportHeaders = (Map) msgContext.getProperty("TRANSPORT_HEADERS");
 
-            log.debug("### CGMSUB-28 - Transport Header : " + transportHeaders + " ###");
-            log.debug("### CGMSUB-28 - Excess Transport Header : " + excessTransportHeaders + " ###");
-
-            log.debug("### CGMSUB-28 - Transport Header - Cookie : " + transportHeaders.get("set-cookie") + " ###");
+            log.debug("### Transport Header - Cookie : " + transportHeaders.get("set-cookie") + " ###");
 
             String str = transportHeaders.get("set-cookie").toString();
             String[] arrOfStr = str.split(";", 3);
@@ -40,10 +37,10 @@ public class CookieHeaderMediator extends AbstractMediator {
             String pathValue = pathArray[1];
             String newCookieValue = firstComponent + ";" + pathName + "=" + "/a" + pathValue + ";" + lastComponent;
 
-            log.debug("### CGMSUB-28 - Cookie : " + newCookieValue + " ###");
+            log.debug("### Cookie : " + newCookieValue + " ###");
             transportHeaders.put("set-cookie", newCookieValue);
             msgContext.setProperty("TRANSPORT_HEADERS", transportHeaders);
-            log.debug("### CGMSUB-28 - Transport Header After : " + transportHeaders + " ###");
+            log.debug("### Transport Header After : " + transportHeaders + " ###");
 
 
 
